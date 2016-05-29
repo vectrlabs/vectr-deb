@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+# This has to be exported to make some magic below work.
+export DH_OPTIONS
+
+HOST=https://cdn.vectr.com/desktop
+
+override_dh_auto_build:
+	-mkdir $(CURDIR)/build
+	wget -qO- -O tmp.zip ${HOST}/linux64/latest && unzip tmp.zip -d $(CURDIR)/build && rm tmp.zip
+	wget -qO- -O tmp.zip ${HOST}/linux32/latest && unzip tmp.zip -d $(CURDIR)/build && rm tmp.zip
+
+override_dh_auto_clean:
+	-rm -rf $(CURDIR)/build
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
+
+%:
+	dh $@

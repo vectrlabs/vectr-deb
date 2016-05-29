@@ -1,0 +1,18 @@
+Source: vectr-deb
+Section: misc
+Priority: optional
+Maintainer: Hsin-Yi Chen (hychen) <ossug.hychen@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+
+Package: vectr-amd64
+Architecture: any 
+Depends: ${misc:Depends}
+Description: Vectr - Vector Grahpic Editor
+ Vectr Grahpic Editr
+
+Package: vectr-ia32
+Architecture: any
+Depends: ${misc:Depends}
+Description: Vectr - Vector Grahpic Editor
+ Vectr Grahpic Editr
